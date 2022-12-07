@@ -1,0 +1,97 @@
+<html>
+
+<head>
+    <title>Assignment 1 - Question 1</title>
+
+    <script language="JavaScript">
+
+        //validate for the name field
+        function validate(form) {
+            if (form.name.value == "") {
+                alert("The name field cannot be empty.")
+                form.name.focus()
+                form.name.select()
+                return false
+            }
+            return true
+        }
+
+        function isNotEmpty(field) {
+            var inputStr = field.value
+            if (inputStr == "" || inputStr == null) {
+                alert("This field requires an entry.")
+                field.focus()
+                field.select()
+                return false
+            }
+            return true
+        }
+
+        function isNumber(field) {
+            if (isNotEmpty(field)) {
+                var inputStr = field.value
+                for (var i = 0; i < inputStr.length; i++) {
+                    var oneChar = inputStr.substring(i, i + 1)
+                    if (oneChar < "0" || oneChar > "9") {
+                        alert("DOB must be numerical value.")
+                        field.focus()
+                        field.select()
+                        return false
+                    }
+                }
+                return true
+            }
+            return false
+        }
+        
+        function isNumberPhone(field) {
+            var inputStr = field.value
+            for (var i = 1; i < inputStr.length; i++) {
+                var oneChar = inputStr.substring(i, i + 1)
+                if (oneChar < "0" || oneChar > "9") {
+                    alert("Phone number cannot contains non-numerical value.")
+                    field.focus()
+                    field.select()
+                    return false
+                }
+            }
+            return true
+        }
+
+
+    </script>
+</head>
+
+<body>
+    <form method="GET" action="http://www.it.murdoch.edu.au/cgi-bin/reply1.pl" onSubmit="return validate(this)">
+        <p>Name: <input name="name" type="text" size="20"></p>
+        <p>Phone Number: <input name="phone" type="text" size="10" value="+65" placeholder="+65" onChange="isNumberPhone(this)" required></p>
+        <p> Date of Birth<br>
+            Day(1-31): <input name="day" type="text" size="10"value="1" onChange="isNumber(this)"><br>
+            Month(1-12): <input name="month" type="text" size="10" value="1" onChange="isNumber(this)"><br>
+            Year: <input name="year" type="text" size="10" value="1999" onChange="isNumber(this)"><br>
+        </p>
+
+        <p>Favourite Pastime: 
+        <select name="Favourite Pastime">
+            <option> Surfing the Web
+            <option> Playing Sport
+            <option> Listening to Music 
+            <option> Watching TV
+            <option> Playing Games
+            <option> Community Service
+            <option> Daydreaming
+            <option> Reading
+            <option> Meditation
+	    </select> 
+        </p>    
+        
+        <p>
+            <input type="submit">
+            <input type="reset">
+        </p>
+
+    </form>
+</body>
+
+</html>
